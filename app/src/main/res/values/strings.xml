@@ -8,5 +8,6 @@
     <string name="no_threats">No Threats Detected</string>
     <string name="critical_alert">CRITICAL SCAM ALERT</string>
     <string name="scam_alert">SCAM DETECTED!</string>
+    <string name="warning_icon">Warning</string>
     <string name="safety_score">Safety Score: %1$d/100</string>
 </resources>
