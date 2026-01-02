@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.projectkavach.guardian">
+
+    <!-- 
+        PRIVACY-FIRST MANIFEST
+        
+        CRITICAL: This app has ZERO internet permissions.
+        All processing happens on-device. No data transmission.
+        
+        This is the cornerstone of Project Kavach's privacy guarantee.
+    -->
+
+    <!-- EXPLICITLY NO INTERNET PERMISSION -->
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <!-- REMOVED TO ENSURE ZERO DATA OUT -->
+    
+    <!-- EXPLICITLY NO NETWORK STATE PERMISSION -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <!-- REMOVED TO PREVENT ANY NETWORK MONITORING -->
+
+    <!-- Required permissions for core functionality -->
+    
+    <!-- Accessibility Service - The 'Eyes' of Kavach -->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    
+    <!-- System Overlay - The 'Shield' -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    
+    <!-- Notifications - For alerts -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    
+    <!-- Foreground Service - Keep guardian running -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    
+    <!-- Biometric Authentication -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    
+    <!-- Query installed packages (to detect screen-share apps) -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:name=".KavachApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Kavach"
+        android:hardwareAccelerated="true"
+        tools:targetApi="31">
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Kavach.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Onboarding Activity -->
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Kavach.Onboarding" />
+
+        <!-- 
+            ACCESSIBILITY SERVICE - The Core of Kavach
+            
+            This service monitors screen content in real-time.
+            Battery-optimized with keyword-trigger architecture.
+        -->
+        <service
+            android:name=".KavachAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true"
+            android:enabled="true">
+            
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- 
+            FOREGROUND SERVICE - Keep Guardian Running
+            
+            Ensures the accessibility service stays active.
+            Shows persistent notification for transparency.
+        -->
+        <service
+            android:name=".KavachForegroundService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Digital Scam Protection Service" />
+        </service>
+
+        <!-- 
+            BROADCAST RECEIVER - Boot Completion
+            
+            Start guardian automatically when device boots.
+        -->
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 
+            BROADCAST RECEIVER - Package Events
+            
+            Monitor app installations/uninstallations.
+            Used to detect malicious APK installations.
+        -->
+        <receiver
+            android:name=".PackageEventReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 
+            FILE PROVIDER - Secure file sharing
+            
+            For exporting threat logs if needed.
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

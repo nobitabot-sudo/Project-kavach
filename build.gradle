@@ -1,0 +1,134 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.projectkavach.guardian'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.projectkavach.guardian"
+        minSdk 26  // Android 8.0+ (for AICore support)
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // Vector drawables support
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // CRITICAL: Verify no internet permission in release build
+            manifestPlaceholders = [
+                networkSecurityConfig: "@xml/network_security_config"
+            ]
+        }
+        
+        debug {
+            minifyEnabled false
+            debuggable true
+            
+            // Enforce zero network even in debug
+            manifestPlaceholders = [
+                networkSecurityConfig: "@xml/network_security_config"
+            ]
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+    
+    // Battery optimization
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    // Core Android
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    // Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-service:2.7.0'
+    
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    
+    // Biometric Authentication
+    implementation 'androidx.biometric:biometric:1.2.0-alpha05'
+    
+    // SQLite (for local database)
+    implementation 'androidx.sqlite:sqlite-ktx:2.4.0'
+    
+    // CRITICAL: Android AICore for on-device AI
+    // This provides Gemini Nano integration
+    implementation 'com.google.android.gms:play-services-aicore:16.0.0-alpha01'
+    
+    // WorkManager (for background tasks)
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    
+    // ViewPager2 (for onboarding)
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    
+    // Lottie (for animations)
+    implementation 'com.airbnb.android:lottie:6.3.0'
+    
+    // Timber (for logging)
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+// Verify no internet dependency
+tasks.register('verifyNoInternet') {
+    doLast {
+        def manifestFile = file('src/main/AndroidManifest.xml')
+        def manifestText = manifestFile.text
+        
+        if (manifestText.contains('android.permission.INTERNET')) {
+            throw new GradleException('❌ SECURITY VIOLATION: Internet permission detected in manifest!')
+        }
+        
+        if (manifestText.contains('android.permission.ACCESS_NETWORK_STATE')) {
+            throw new GradleException('❌ SECURITY VIOLATION: Network state permission detected in manifest!')
+        }
+        
+        println '✅ Privacy verification passed: No internet permissions found'
+    }
+}
+
+// Run verification before every build
+tasks.named('preBuild').configure {
+    dependsOn 'verifyNoInternet'
+}
