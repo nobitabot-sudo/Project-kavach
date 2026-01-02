@@ -1,17 +1,2 @@
-pluginManagement {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-dependencyResolutionManagement {
-    // PREFER_SETTINGS ka matlab hai repositories sirf yahi se uthayi jayengi
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
 rootProject.name = "Project-kavach"
 include ':app'
