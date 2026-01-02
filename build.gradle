@@ -4,12 +4,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        // Yeh version 8.2.0 pakka chalega
         classpath 'com.android.tools.build:gradle:8.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20"
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
