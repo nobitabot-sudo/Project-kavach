@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Critical Alert Overlay - Full-Screen Red Warning -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC000000"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Background Animated Gradient -->
+    <View
+        android:id="@+id/alertBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/critical_gradient" />
+
+    <!-- Main Content Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <!-- Massive STOP Icon with Glow -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+
+            <!-- Glow Effect -->
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@drawable/ic_stop_hand"
+                android:tint="#FF0000"
+                android:alpha="0.3"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:contentDescription="@string/critical_alert" />
+
+            <!-- Main Icon -->
+            <ImageView
+                android:id="@+id/stopIcon"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_stop_hand"
+                android:tint="#FF0000"
+                android:contentDescription="@string/critical_alert" />
+
+        </FrameLayout>
+
+        <!-- Critical Warning Text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CRITICAL THREAT"
+            android:textColor="#FF0000"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.05"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="High-risk scam attempt detected"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Threat Type Badge -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/critical_badge"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:id="@+id/criticalThreatType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SCREEN SHARING ATTACK"
+                android:textColor="#FF0000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+        </LinearLayout>
+
+        <!-- Warning Message Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#1A1A1A"
+            android:layout_marginBottom="32dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="⚠️ IMMEDIATE ACTION REQUIRED"
+                    android:textColor="#FF0000"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/criticalMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A screen-sharing app is active while you're using a banking/UPI application. Scammers can see your OTPs and PIN."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginBottom="16dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#333333"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DO NOT PROCEED"
+                    android:textColor="#FF0000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/criticalInstructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Close the screen-sharing app immediately\n• Do NOT enter any OTP or PIN\n• Contact your bank if transaction occurred"
+                    android:textColor="#CCCCCC"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="6dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Emergency Exit Button -->
+        <Button
+            android:id="@+id/emergencyExitButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="🛡️ EXIT TO SAFETY"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="@drawable/button_emergency"
+            android:elevation="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Biometric Override Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="2dp"
+                android:background="#333333"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If you understand the risk:"
+                android:textColor="#999999"
+                android:textSize="13sp"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/biometricOverrideButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="🔓 Unlock with Biometric"
+                android:textColor="#CCCCCC"
+                android:textSize="14sp"
+                android:background="@drawable/button_ghost"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Pulsating Red Border Effect -->
+    <View
+        android:id="@+id/pulseBorder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/pulse_border" />
+
+</FrameLayout>

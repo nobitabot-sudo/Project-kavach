@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Scam Warning Overlay - Modern Yellow Card Layout -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Main Warning Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="80dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="24dp"
+        app:cardBackgroundColor="#0A0A0A">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <!-- Header Section with Warning Icon -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/warning_header_gradient"
+                    android:padding="20dp">
+
+                    <!-- Warning Icon -->
+                    <ImageView
+                        android:id="@+id/warningIcon"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_warning_large"
+                        android:tint="#FFB800"
+                        android:contentDescription="@string/warning_icon" />
+
+                    <!-- Threat Title -->
+                    <TextView
+                        android:id="@+id/threatTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/warningIcon"
+                        android:layout_marginTop="12dp"
+                        android:text="Potential Scam Detected"
+                        android:textColor="#FFB800"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:fontFamily="sans-serif-medium" />
+
+                    <!-- Severity Badge -->
+                    <LinearLayout
+                        android:id="@+id/severityBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/threatTitle"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/badge_rounded"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/severityText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HIGH RISK"
+                            android:textColor="#000000"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/confidenceText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="• 95%"
+                            android:textColor="#000000"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <!-- Content Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Category Tag -->
+                    <TextView
+                        android:id="@+id/categoryTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FEAR &amp; AUTHORITY"
+                        android:textColor="#00F2FF"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Reasoning Section -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Why This is a Scam:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:id="@+id/reasoningText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Official government agencies never conduct arrests or investigations via WhatsApp or video calls."
+                        android:textColor="#CCCCCC"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="4dp"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Psychology Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/psychology_box"
+                        android:padding="16dp"
+                        android:layout_marginBottom="20dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="🧠 Scam Psychology:"
+                            android:textColor="#FFB800"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/psychologyText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Scammers use authority figures and create panic to bypass your rational thinking."
+                            android:textColor="#E6E6E6"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="4dp" />
+
+                    </LinearLayout>
+
+                    <!-- Prevention Tips Section -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✓ How to Protect Yourself:"
+                        android:textColor="#00FF88"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/preventionTips"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• Never share OTP or banking details\n• Verify through official channels\n• Hang up and call official numbers"
+                        android:textColor="#CCCCCC"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="6dp"
+                        android:layout_marginBottom="24dp" />
+
+                    <!-- Detected Keywords Chip -->
+                    <LinearLayout
+                        android:id="@+id/keywordsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Detected: "
+                            android:textColor="#999999"
+                            android:textSize="12sp" />
+
+                        <HorizontalScrollView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:id="@+id/keywordChips"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" />
+
+                        </HorizontalScrollView>
+
+                    </LinearLayout>
+
+                    <!-- Action Buttons -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <!-- Dismiss Button -->
+                        <Button
+                            android:id="@+id/dismissButton"
+                            android:layout_width="0dp"
+                            android:layout_height="56dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:text="I Understand"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:background="@drawable/button_secondary"
+                            android:elevation="0dp" />
+
+                        <!-- Block/Exit Button -->
+                        <Button
+                            android:id="@+id/blockButton"
+                            android:layout_width="0dp"
+                            android:layout_height="56dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:text="Exit Now"
+                            android:textColor="#000000"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:background="@drawable/button_primary"
+                            android:elevation="0dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

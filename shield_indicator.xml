@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shield Indicator Overlay - Minimalist Neon-Cyan Circular Icon -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- Outer Glow Ring (Animated Pulse) -->
+    <View
+        android:id="@+id/shieldGlowRing"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:background="@drawable/glow_ring"
+        android:alpha="0.6" />
+
+    <!-- Shield Icon Container -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#0A0A0A">
+
+        <!-- Inner Gradient Background -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shield_gradient" />
+
+        <!-- Shield Icon (Vector) -->
+        <ImageView
+            android:id="@+id/shieldIcon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_shield"
+            android:tint="#00F2FF"
+            android:contentDescription="@string/shield_active" />
+
+        <!-- Status Indicator Dot -->
+        <View
+            android:id="@+id/statusDot"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/status_dot"
+            android:visibility="visible" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Threat Count Badge (Hidden by Default) -->
+    <TextView
+        android:id="@+id/threatCountBadge"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="top|end"
+        android:background="@drawable/badge_background"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:elevation="10dp" />
+
+</FrameLayout>
