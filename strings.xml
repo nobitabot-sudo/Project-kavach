@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Project Kavach</string>
+    
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_description">
+        Project Kavach protects you from digital scams by monitoring screen content in real-time.
+        \n\n
+        🛡️ ALL PROCESSING HAPPENS ON YOUR DEVICE\n
+        🔒 ZERO DATA LEAVES YOUR PHONE\n
+        🚫 NO INTERNET CONNECTION REQUIRED\n
+        \n
+        Kavach detects scam patterns like:\n
+        • Digital Arrest Scams (Fake CBI/Police calls)\n
+        • UPI Fraud (Reverse payment tricks)\n
+        • Phishing Links (Fake bank websites)\n
+        • Screen-sharing Attacks (AnyDesk/TeamViewer)\n
+        • Job Scams (Fake work-from-home offers)\n
+        • Investment Scams (Crypto/Trading fraud)\n
+        \n
+        When a threat is detected, Kavach shows you:\n
+        ✅ WHY it\'s a scam (Reasoning)\n
+        ✅ HOW scammers manipulate you (Psychology)\n
+        ✅ WHAT to do instead (Prevention Tips)\n
+        \n
+        Your privacy is guaranteed. Kavach has NO internet permission in its code.
+    </string>
+    
+    <string name="accessibility_service_summary">
+        24/7 On-Device AI Guardian. Detects scams before you fall victim. 100% Private.
+    </string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_welcome_title">Welcome to Project Kavach</string>
+    <string name="onboarding_welcome_subtitle">Your 24/7 AI Guardian Against Digital Scams</string>
+    
+    <string name="onboarding_step1_title">Enable Accessibility</string>
+    <string name="onboarding_step1_description">
+        Kavach needs to read your screen to detect scam patterns.\n\n
+        This happens ONLY on your device. No data is sent anywhere.
+    </string>
+    
+    <string name="onboarding_step2_title">Grant Notification Access</string>
+    <string name="onboarding_step2_description">
+        Kavach will show alerts when threats are detected.\n\n
+        These notifications are critical for your protection.
+    </string>
+    
+    <string name="onboarding_step3_title">Download AI Model</string>
+    <string name="onboarding_step3_description">
+        Downloading Gemini Nano for offline scam detection.\n\n
+        This is a one-time download. After this, Kavach works 100% offline.
+    </string>
+    
+    <!-- Shield Status -->
+    <string name="shield_active">Shield Active</string>
+    <string name="shield_inactive">Shield Inactive</string>
+    <string name="shield_protected">You\'re Protected</string>
+    <string name="shield_vulnerable">Enable Kavach for Protection</string>
+    
+    <!-- Threat Levels -->
+    <string name="threat_level_critical">CRITICAL</string>
+    <string name="threat_level_high">HIGH</string>
+    <string name="threat_level_medium">MEDIUM</string>
+    <string name="threat_level_low">LOW</string>
+    
+    <!-- Actions -->
+    <string name="action_dismiss">Dismiss</string>
+    <string name="action_ignore">Ignore &amp; Continue</string>
+    <string name="action_block">Block Threat</string>
+    <string name="action_emergency_stop">STOP &amp; Exit</string>
+    <string name="action_biometric_override">Use Biometric to Override</string>
+    <string name="action_enable_accessibility">Enable Accessibility</string>
+    <string name="action_grant_notifications">Grant Notifications</string>
+    <string name="action_download_model">Download Model</string>
+    
+    <!-- Biometric -->
+    <string name="biometric_title">Confirm Override</string>
+    <string name="biometric_subtitle">Are you sure you want to ignore this threat?</string>
+    <string name="biometric_description">Use fingerprint or face to continue</string>
+    
+    <!-- Notifications -->
+    <string name="notification_channel_guardian">Guardian Active</string>
+    <string name="notification_channel_alerts">Threat Alerts</string>
+    <string name="notification_guardian_title">Kavach is Protecting You</string>
+    <string name="notification_guardian_text">24/7 scam detection active</string>
+    
+    <!-- Error Messages -->
+    <string name="error_accessibility_disabled">Accessibility service is disabled. Enable it in Settings.</string>
+    <string name="error_overlay_permission">Overlay permission is required for alerts.</string>
+    <string name="error_model_download">Failed to download AI model. Please try again.</string>
+    
+    <!-- Privacy Policy -->
+    <string name="privacy_guarantee_title">Privacy Guarantee</string>
+    <string name="privacy_guarantee_description">
+        Project Kavach operates with ZERO data collection:\n\n
+        ✅ No internet permission\n
+        ✅ No network access\n
+        ✅ No cloud storage\n
+        ✅ No analytics\n
+        ✅ No tracking\n\n
+        Everything stays on YOUR device.
+    </string>
+</resources>
