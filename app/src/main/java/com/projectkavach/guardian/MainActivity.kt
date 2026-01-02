@@ -1,5 +1,10 @@
 package com.projectkavach.guardian
 
+import android.view.View
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import android.graphics.Color
+import android.content.Intent
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
