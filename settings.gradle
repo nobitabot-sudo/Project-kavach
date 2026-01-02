@@ -6,8 +6,8 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    // Is line ko humne badal diya hai taaki conflict na ho
-    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    // PREFER_SETTINGS ka matlab hai repositories sirf yahi se uthayi jayengi
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
