@@ -12,15 +12,7 @@
         This is the cornerstone of Project Kavach's privacy guarantee.
     -->
 
-    <!-- EXPLICITLY NO INTERNET PERMISSION -->
-    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
-    <!-- REMOVED TO ENSURE ZERO DATA OUT -->
     
-    <!-- EXPLICITLY NO NETWORK STATE PERMISSION -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
-    <!-- REMOVED TO PREVENT ANY NETWORK MONITORING -->
-
-    <!-- Required permissions for core functionality -->
     
     <!-- Accessibility Service - The 'Eyes' of Kavach -->
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"
